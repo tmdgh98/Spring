@@ -17,6 +17,7 @@ public class MainApp {
 		
 		tv = ctx.getBean("lgtv", TV.class);
 		tv.on();
+		tv.speaker();
 		
 		ctx.close();
 		
