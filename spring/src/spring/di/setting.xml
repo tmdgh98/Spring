@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		
+		
+		<context:component-scan base-package="spring.di.ui, spring.di.entity"></context:component-scan>
+<!-- 	<bean id="exam" class="spring.di.entity.NewlecExam">
+		<property name="kor">
+			<value>10</value>
+		</property>
+		<property name="eng" value="10"></property>
+		<property name="math" value="10"></property>
+		<property name="com" value="10"></property>
+		<constructor-arg name="kor" type="int" value="10" />
+		<constructor-arg name="eng" type="int" value="20"></constructor-arg>
+		<constructor-arg name="com" type="int" value="30"></constructor-arg>
+		<constructor-arg name="math" type="int" value="40"></constructor-arg>
+	</bean> -->
+	
+	<!-- <bean id="exam1" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="10" p:math="20" p:com="40" />
+	<bean id="exam2" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="10" p:math="20" p:com="10" /> -->
+	
+	<!-- <bean id="console" class="spring.di.ui.InlineExamConsole">
+		<property name="exam" ref="exam"></property>
+		
+	</bean> -->
+	
+	
+	<!-- <bean id="exams" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<bean class="spring.di.entity.NewlecExam" p:kor="10" p:eng="10" p:math="20" p:com="40" />
+				<ref bean="exam"></ref>
+			</list>
+		</constructor-arg>
+	</bean> --><!-- 
+	<util:list id="exams" list-class="java.util.ArrayList">
+		<bean class="spring.di.entity.NewlecExam" p:kor="10" p:eng="10" p:math="20" p:com="40" />
+		<ref bean="exam"></ref>
+	</util:list> -->
+		
+</beans>
