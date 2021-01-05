@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="student2" class="co.ho.student.Student">
+		<constructor-arg name="name" value="승민" />
+		<constructor-arg name="age" value="20" />
+		<constructor-arg name="hobbys">
+			<list>
+				<value>쿠키런</value>
+				<value>마마무</value>
+				<value>메이플</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="169" />
+	</bean>
+	<!-- xml에 자바를 넣는방법 -->
+	<context:annotation-config />
+	<bean class="co.ho.student.BeanConfig" /> 
+</beans>
