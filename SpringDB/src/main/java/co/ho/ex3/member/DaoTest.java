@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Repository("dao")
+//@Repository("dao")
 public class DaoTest {
-	@Autowired
+	//@Autowired
 	private DataSource dataSource;
 	
 	Connection conn;

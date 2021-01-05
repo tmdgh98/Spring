@@ -1,7 +1,12 @@
 package co.ho.ex3.member;
 
+import java.util.ArrayList;
+
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import co.ho.ex3.member.service.MemberService;
+import co.ho.ex3.member.vo.MemberVo;
 
 public class MainApp {
 	public static void main(String[] args) {
@@ -9,8 +14,12 @@ public class MainApp {
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext(context);
 		
 //		DaoTest dao = ctx.getBean("dao", DaoTest.class);
-		DaoTest dao = (DaoTest) ctx.getBean("dao");
-		dao.run();
+		MemberService member =  (MemberService) ctx.getBean("memberService");
+		ArrayList<MemberVo> list = member.selectAll();
+		
+		for(MemberVo vo : list) {
+			vo.toString();
+		}
 		
 		ctx.close();
 	}
