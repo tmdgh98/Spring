@@ -48,6 +48,7 @@ public class Program {
 		System.out.printf("avg is %f \n",exam.avg());
 		
 		
+		
 	}
 
 }
