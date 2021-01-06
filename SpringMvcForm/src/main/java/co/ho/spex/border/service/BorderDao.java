@@ -19,6 +19,7 @@ public class BorderDao implements BorderService {
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	
+	
 	private String SELECTLIST = "SELECT * FROM BORDER ORDER BY 1";
 	private String INSERT = "INSERT INTO BORDER(BORDERID, BORDERWRITER, BORDERTITLE, BORDERCONTENT) VALUES(?,?,?,?)";
 	
