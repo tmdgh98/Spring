@@ -22,6 +22,7 @@ public class HomeController {
 		
 		String str = "환영합니다. 스프링 프레임워크에 온것을!!!!";
 		
+		
 		model.addAttribute("serverTime",  str);
 		
 		return "home";
