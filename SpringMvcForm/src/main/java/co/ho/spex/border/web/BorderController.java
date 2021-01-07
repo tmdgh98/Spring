@@ -41,7 +41,8 @@ public class BorderController {
 		n = borderService.insert(vo);
 		
 		if(n != 0) {
-			viewPage = "border/successinput";
+			viewPage = "redirect:/border/list"; //redirect 컨트롤러호출(.do호출)
+			//viewPage = "redirect:list"; //위아래 둘다됨 이유 모름 ㅎ
 		}else {
 			viewPage = "border/failinput";
 		}
