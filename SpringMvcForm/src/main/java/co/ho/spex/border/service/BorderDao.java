@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import org.springframework.stereotype.Repository;
 
 import co.ho.spex.border.vo.BorderVo;
 
