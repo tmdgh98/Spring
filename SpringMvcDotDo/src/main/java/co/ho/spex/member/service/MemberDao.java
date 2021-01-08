@@ -3,6 +3,7 @@ package co.ho.spex.member.service;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ public class MemberDao implements MemberService {
 	@Override
 	public ArrayList<MemberVo> memberList() throws SQLException{
 		String sql = "select * from member";
-				
+		
 		return (ArrayList<MemberVo>) jdbcTemplate.query(sql, new MemberRowMapper());
 	}
 
