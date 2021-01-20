@@ -21,6 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- bean들 scan -->
 	<context:component-scan base-package="co.ho.spex" />
 	
 	

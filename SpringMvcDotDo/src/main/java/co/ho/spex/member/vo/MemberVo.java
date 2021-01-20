@@ -1,41 +1,28 @@
 package co.ho.spex.member.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Data
+//@Getter 
+//@Setter
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@ToString
+//@Builder //만능생성자
 public class MemberVo {
 	private String memberId;
 	private String memberName;
+	@JsonIgnore
 	private String password;
 	private String memberAuth;
 	private int memberPoint;
-	
-	public String getMemberId() {
-		return memberId;
-	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
-	public String getMemberName() {
-		return memberName;
-	}
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getMemberAuth() {
-		return memberAuth;
-	}
-	public void setMemberAuth(String memberAuth) {
-		this.memberAuth = memberAuth;
-	}
-	public int getMemberPoint() {
-		return memberPoint;
-	}
-	public void setMemberPoint(int memberPoint) {
-		this.memberPoint = memberPoint;
-	}
 	
 }

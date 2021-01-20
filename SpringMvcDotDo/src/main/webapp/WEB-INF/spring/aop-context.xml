@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<context:component-scan base-package="co.ho.spex" />
+	<!-- <context:component-scan base-package="co.ho.spex" />
 	<bean id="logAspect" class="co.ho.spex.member.common.LogAdvice" />
 	
 	<aop:config>
@@ -16,5 +16,5 @@
 			<aop:around method="logBefore" pointcut-ref="pointM"/>
 		</aop:aspect>
 	</aop:config>
-	<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
 </beans>

@@ -1,12 +1,11 @@
-package co.ho.spex.member.serviceImpl;
+package co.ho.spex.member.service.impl;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.ho.spex.member.service.MemberDao;
 import co.ho.spex.member.service.MemberService;
 import co.ho.spex.member.vo.MemberVo;
 
@@ -14,12 +13,12 @@ import co.ho.spex.member.vo.MemberVo;
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
-	private MemberDao dao;
+	private MemberMapper dao;
 	
 	@Override
-	public ArrayList<MemberVo> memberList() throws SQLException{
+	public List<MemberVo> memberList(MemberVo vo) throws SQLException{
 
-		return dao.memberList();
+		return dao.memberList(vo);
 	}
 
 	@Override
@@ -49,7 +48,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean memberLoginCheck(MemberVo vo) throws SQLException{
 		// TODO Auto-generated method stub
-		return dao.memberLoginCheck(vo);
+		MemberVo resultvo = dao.memberSelect(vo);
+		if(vo != null && vo.getPassword().equals(resultvo.getPassword())) {
+			return true;
+		}else {
+			return false; 
+		}
 	}
 
 }

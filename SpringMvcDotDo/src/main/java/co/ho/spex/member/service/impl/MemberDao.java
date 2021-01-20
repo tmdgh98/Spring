@@ -1,22 +1,25 @@
-package co.ho.spex.member.service;
+package co.ho.spex.member.service.impl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import co.ho.spex.member.service.MemberRowMapper;
+import co.ho.spex.member.service.MemberService;
 import co.ho.spex.member.vo.MemberVo;
 
-@Repository("memberDao")
+//@Repository("memberDao")
 public class MemberDao implements MemberService {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public ArrayList<MemberVo> memberList() throws SQLException{
+	public List<MemberVo> memberList(MemberVo vo) throws SQLException{
 		String sql = "select * from member";
 		
 		return (ArrayList<MemberVo>) jdbcTemplate.query(sql, new MemberRowMapper());
