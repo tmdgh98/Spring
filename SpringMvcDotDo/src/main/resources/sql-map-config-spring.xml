@@ -12,13 +12,13 @@
 		 <setting name="defaultStatementTimeout" value="25000"/>
 		 <!-- 오라클 컬럼이 first_name 를 VO firstName 처럼 카멜케이스로 변환 -->
 		 <!-- _랑 대문자 매칭 = true 매칭안함 = false -->
-		 <setting name="mapUnderscoreToCamelCase" value="false"/>
+		 <setting name="mapUnderscoreToCamelCase" value="true"/>
 	 </settings>
 	 <!-- Alias 설정 -->
 	 <typeAliases>
 	 	<typeAlias alias="user" type="co.ho.spex.users.vo.UserVO" />
 	 	<typeAlias alias="MemberVo" type="co.ho.spex.member.vo.MemberVo" />
 	 	<!-- <typeAlias alias="UserDAO" type="co.ho.spex.users.service.impl.UserDAO" /> -->
-	 	<package name="co.ho.spex.**.vo"/>
+	 	<package name="co.ho.spex.emp.vo"/> 
 	 </typeAliases>
 </configuration>

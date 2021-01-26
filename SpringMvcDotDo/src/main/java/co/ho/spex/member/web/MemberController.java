@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import co.ho.spex.member.common.Paging;
 import co.ho.spex.member.service.MemberService;
 import co.ho.spex.member.service.impl.MemberMapper;
 import co.ho.spex.member.vo.MemberVo;
@@ -37,9 +38,25 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/memberList.do")
-	public String memberList(Model model,@ModelAttribute("vo") MemberVo vo) throws SQLException{
+	public String memberList(Model model,@ModelAttribute("vo") MemberVo vo, Paging paging) throws SQLException{
 		//ModelAtrribute를 넣으면 변수명을 정할수있다.
 		//적지않으면 첫글자가 소문자로 변한 변수명이 된다. memberVo
+		
+		//출력건수
+		paging.setPageUnit(10); //한페이지 글숫자
+		paging.setPageSize(10); //페이지블록수
+		// 페이지번호 파라미터
+		if( paging.getPage() == null) {
+			paging.setPage(1); 
+		}		
+		// 시작/마지막 레코드 번호
+		vo.setStart(paging.getFirst());
+		vo.setEnd(paging.getLast());		
+		// 전체 건수
+		paging.setTotalRecord(20);
+		
+		model.addAttribute("paging", paging);	
+		
 		List<MemberVo> members = memberService.memberList(vo);
 		
 		model.addAttribute("members", members);

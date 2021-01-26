@@ -12,6 +12,7 @@
 		<h3><a href="memberList.do">멤버목록보기</a></h3>
 		<h3><a href="memberInsertForm.do">회원가입하기</a></h3>
 		<h3><a href="memberLoginForm.do">로그인</a></h3>
+		<a href="deptExcelView.do">엑셀다운</a>
 	</div>
 	
 </body>

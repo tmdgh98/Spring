@@ -6,22 +6,25 @@
 <mapper namespace="co.ho.spex.member.service.impl.MemberMapper">
 	<select id="memberList" resultType="MemberVo" parameterType="MemberVo">
 	<!-- 파라미터타입은 생략가능 -->
-		SELECT * 
-		FROM MEMBER
-		<where>
-			<if test="memberId != null and memberId != ''">
-				memberId like '%' || #{memberId} || '%'
-			</if>
-			<if test="memberName != null and memberName != ''">
-				and memberName like '%' || #{memberName} || '%'
-			</if>
-			<if test="memberAuth != null and memberAuth != ''">
-				and memberAuth = #{memberAuth}
-			</if>
-		</where>
-		order by memberId
+		
+		select a.* from ( select b.*, rownum rn from (
+			SELECT * 
+			FROM MEMBER
+			<where>
+				<if test="memberId != null and memberId != ''">
+					memberId like '%' || #{memberId} || '%'
+				</if>
+				<if test="memberName != null and memberName != ''">
+					and memberName like '%' || #{memberName} || '%'
+				</if>
+				<if test="memberAuth != null and memberAuth != ''">
+					and memberAuth = #{memberAuth}
+				</if>
+			</where>
+			order by memberId
+		) b ) a where rn between #{start} and #{end}
 	</select>
-	
+		
 	<select id="memberSelect" resultType="MemberVo">
 		select * from member where memberid = #{memberid}
 	</select>

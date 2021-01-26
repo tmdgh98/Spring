@@ -24,5 +24,7 @@ public class MemberVo {
 	private String password;
 	private String memberAuth;
 	private int memberPoint;
+	private int start;
+	private int end;
 	
 }
