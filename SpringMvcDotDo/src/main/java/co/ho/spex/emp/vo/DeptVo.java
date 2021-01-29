@@ -9,5 +9,4 @@ public class DeptVo {
 	private String managerId;
 	private String locationId;
 	private String orderColumn;
-	
 }

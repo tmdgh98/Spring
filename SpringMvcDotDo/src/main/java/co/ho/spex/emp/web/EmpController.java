@@ -2,15 +2,18 @@ package co.ho.spex.emp.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,11 @@ import co.ho.spex.emp.service.impl.EmpMapper;
 import co.ho.spex.emp.vo.DeptVo;
 import co.ho.spex.emp.vo.EmpVo;
 import co.ho.spex.emp.vo.JobVo;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 
 @Controller
 public class EmpController {
@@ -113,6 +121,24 @@ public class EmpController {
 		map.put("filename", "excel_dept");
 		map.put("datas", list);
 		return new ModelAndView("commonExcelView", map);
+	}
+
+	
+	// pdf출력
+	@Autowired
+	DataSource datasource;
+	
+	@RequestMapping("report.do" )
+	public void report(HttpServletRequest request, HttpServletResponse response
+			, @RequestParam(required=false, defaultValue="10") int dept) throws Exception {
+		Connection conn = datasource.getConnection();
+		// 소스 컴파일 jrxml -> jasper
+		InputStream stream = getClass().getResourceAsStream("/reports/empparam.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(stream); // 파라미터 맵
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("P_DEPARTMENT_ID", dept);
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, conn);
+		JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
 	}
 
 }
