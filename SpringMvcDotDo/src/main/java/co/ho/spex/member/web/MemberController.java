@@ -10,6 +10,7 @@ import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import co.ho.spex.member.common.Paging;
 import co.ho.spex.member.service.MemberService;
 import co.ho.spex.member.service.impl.MemberMapper;
+import co.ho.spex.member.vo.MemberValidation;
 import co.ho.spex.member.vo.MemberVo;
 
 @Controller
@@ -69,9 +71,19 @@ public class MemberController {
 		return "member/memberInsertForm";
 	}
 	
+	@Autowired
+	MemberValidation memberValidation;
 	@PostMapping("/memberInsert.do")
-	public String memberinsert(MemberVo vo,Model model) throws SQLException {
-		String viewPath = null;
+	public String memberinsert(MemberVo vo,Model model, BindingResult result) throws SQLException {
+		//validate 시작
+		memberValidation.validate(vo, result);
+		
+		if(result.hasErrors()) {
+			return "member/memberInsertForm";
+		}
+		//validate 끝
+		
+		String viewPath = null;		
 		
 		int n = memberService.memberInsert(vo);
 		System.out.println("-------------------------"+n+"-------------------------------");

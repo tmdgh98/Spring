@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,8 @@
 </head>
 <body>
 <div align="center">
-	<div><h1>회원 등록 화면</h1></div>
+${bindingResult }
+	<div><h1><spring:message code="title.sample" /></h1></div>
 	<div>
 		<form id="frm" name="frm" action="memberInsert.do" method="post">
 			<table border="1">
@@ -16,6 +19,7 @@
 					<th width="100">회원아이디</th>
 					<td>
 						<input type="text" id="memberId" name="memberId" size="35">
+						<span class="error"></span>
 					</td>
 				</tr>
 				<tr>
